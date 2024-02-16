@@ -100,7 +100,7 @@ export default class BoardBuilder {
      * @param {Array<Number>|Number} position - An index or array starting at 1 as [x, y]
      * @param {Ship|number} value - The ship object or type
      * @param {boolean} [pinned] - Should updateGraphicalTypes ignore the ship (only works if value is a ship type)
-     * @returns {Board} this
+     * @returns {BoardBuild} this
      */
     setShip (position, value, pinned) {
         const index = this.positionToIndex(position);
@@ -155,7 +155,7 @@ export default class BoardBuilder {
      * @param {Number} relativePosition - The index relative to position
      * @param {Ship|Number} value - The ship object or type
      * @param {boolean} [pinned] - Should updateGraphicalTypes ignore the ship (only if value is a ship type)
-     * @returns {Board} this
+     * @returns {BoardBuilder} this
      */
     setRelativeShip (position, relativePosition, value, pinned) {
         const index = this.relativePositionToIndex(position, relativePosition);

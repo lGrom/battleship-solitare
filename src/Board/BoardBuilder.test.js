@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import BoardBuilder, { RELATIVE_POSITIONS } from './BoardBuilder';
-import Ship, { PLAY_TYPES } from './Ship';
+import Ship, { GRAPHICAL_TYPES, INTERNAL_TYPES, PLAY_TYPES } from './Ship';
 import { act } from 'react-dom/test-utils';
 
 test('board dimensions', () => {
@@ -77,3 +77,11 @@ test('getRelativeShip', () => {
     expect(board1.getRelativeShip([1, 1], RELATIVE_POSITIONS.TOP)).toBeNull();
     expect(board1.getRelativeShip([1, 4], RELATIVE_POSITIONS.BOTTOM)).toBeNull();
 });
+
+test('pinned ships', () => {
+    const preset = new BoardBuilder(4, 4).setShip([2, 2], GRAPHICAL_TYPES.SINGLE, true);
+    const board = new BoardBuilder(4, 4, preset)
+    board.computeGraphicalTypes(); 
+
+    expect(board.boardState).toEqual(preset.boardState);
+})
